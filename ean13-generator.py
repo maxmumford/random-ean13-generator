@@ -30,5 +30,5 @@ def calculate_checksum(ean):
 
 numbers = generate_12_random_numbers()
 numbers.append(calculate_checksum(numbers))
-print ''.join(map(str, numbers))
+print (''.join(map(str, numbers)))
 
