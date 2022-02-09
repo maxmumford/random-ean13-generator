@@ -6,6 +6,9 @@ This script generates a random EAN13 number and prints it to the standard out.
 
 from random import randrange
 
+# importing functools for reduce()
+import functools
+
 def generate_12_random_numbers():
     numbers = []
     for x in range(12):
@@ -21,8 +24,8 @@ def calculate_checksum(ean):
     """
     assert len(ean) == 12, "EAN must be a list of 12 numbers"
     sum_ = lambda x, y: int(x) + int(y)
-    evensum = reduce(sum_, ean[::2])
-    oddsum = reduce(sum_, ean[1::2])
+    evensum = functools.reduce(sum_, ean[::2])
+    oddsum = functools.reduce(sum_, ean[1::2])
     return (10 - ((evensum + oddsum * 3) % 10)) % 10
 
 numbers = generate_12_random_numbers()
